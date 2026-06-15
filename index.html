@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title> CTU-IT Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="login-card">
-      <h2 id="title">CTU Cebu Technological University<br>
-      <small>Information Technology</small></h2>
-      
-      <div class="input-group mb-3">
-      <input id="username" class="form-control" placeholder="Username">
-      </div>
-      <div class="input-group mb-3">
-      <input id="password" class="form-control" placeholder="Password">
-      </div>
-      
-      <a href="#" class="forgot-pass">Forgot Password?</a>
-      <button id="loginBtn" class="Btn Btn-info btn-login">
-        <span id="btnText">LOGIN</span>
-        <span id="loading" class="spinner-border spinner-border-sm d-none"></span>
-      </button>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PH Climate Detector</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="scan-line"></div>
+<div class="grid-overlay"></div>
+<div class="radar-bg">
+  <div class="radar-ring"></div>
+  <div class="radar-ring"></div>
+  <div class="radar-ring"></div>
+  <div class="radar-ring"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <div class="header-label">PAGASA SYNOPTIC MONITORING</div>
+    <h1>PH <span>CLIMATE</span> DETECTOR</h1>
+    <div class="subtitle">REAL-TIME ATMOSPHERIC ANALYSIS SYSTEM</div>
+  </header>
+
+  <div class="location-bar">
+    <select id="locationSelect">
+      <optgroup label="Luzon">
+        <option value="14.5995,120.9842">Metro Manila</option>
+        <option value="18.1954,120.5934">Laoag, Ilocos Norte</option>
+        <option value="16.4023,120.5960">Baguio City</option>
+        <option value="15.4755,120.5963">San Fernando, Pampanga</option>
+        <option value="13.6218,123.1948">Legazpi, Albay</option>
+        <option value="16.6830,121.5700">Tuguegarao, Cagayan</option>
+        <option value="14.0942,121.1464">Lucena City</option>
+      </optgroup>
+      <optgroup label="Visayas">
+        <option value="10.3157,123.8854">Cebu City</option>
+        <option value="11.1600,124.9020">Tacloban, Leyte</option>
+        <option value="10.7202,122.5621">Iloilo City</option>
+        <option value="9.7177,118.7290">Puerto Princesa, Palawan</option>
+      </optgroup>
+      <optgroup label="Mindanao">
+        <option value="7.1907,125.4553">Davao City</option>
+        <option value="8.1527,124.2452">Cagayan de Oro</option>
+        <option value="6.9214,122.0790">Zamboanga City</option>
+        <option value="7.8731,125.0586">Butuan City</option>
+        <option value="8.4774,124.6474">Iligan City</option>
+      </optgroup>
+    </select>
+    <button id="scanBtn" onclick="runScan()">SCAN</button>
+  </div>
+
+  <div class="status-alert loading" id="statusAlert">
+    <div class="dot" id="statusDot"></div>
+    <span id="statusText">Select a location and press SCAN to begin atmospheric analysis.</span>
+  </div>
+
+  <div class="main-display" id="mainDisplay">
+    <div class="placeholder-state">
+      <div class="placeholder-icon">📡</div>
+      <div class="placeholder-text">AWAITING SCAN INPUT</div>
     </div>
-    
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script type="text/babel" src="react.jsx"></script>
-  </body>
+  </div>
+
+  <div class="signal-grid" id="signalGrid" style="display:none"></div>
+
+  <div class="footer-bar">
+    <span>DATA SOURCE: OPEN-METEO.COM · ERA5 REANALYSIS</span>
+    <span id="lastScan">LAST SCAN: —</span>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
 </html>
