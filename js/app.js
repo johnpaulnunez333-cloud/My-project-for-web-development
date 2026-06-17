@@ -61,7 +61,7 @@ async function runScan() {
   document.getElementById("signalGrid").style.display = "none";
 
   try {
-    const res = await fetch(`https://my-project-for-web-development-1.onrender.com/api/weather?lat=${lat}&lon=${lon}`);
+    const res = await fetch(`/api/weather?lat=${lat}&lon=${lon}`);
     if (!res.ok) throw new Error("Server error: " + res.status);
     const data = await res.json();
     if (data.error) throw new Error(data.error);
