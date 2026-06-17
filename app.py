@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, send_from_directory, request
+from flask_cors import CORS
 import requests
 import os
 
 app = Flask(__name__, static_folder=".")
+CORS(app)
 
 WMO_LABELS = {
     0: "Clear Sky", 1: "Mainly Clear", 2: "Partly Cloudy", 3: "Overcast",
