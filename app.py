@@ -122,7 +122,7 @@ def weather():
             f"surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m"
             f"&wind_speed_unit=ms&timezone=Asia/Manila"
         )
-        resp = requests.get(url, timeout=10)
+        resp = requests.get(url, timeout=30)
         resp.raise_for_status()
         raw = resp.json()
 
